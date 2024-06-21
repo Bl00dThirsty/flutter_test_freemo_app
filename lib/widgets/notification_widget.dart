@@ -1,8 +1,20 @@
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
 
+
+Future<List<Photos>> getPhotos() async {
+  final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/photos"));
+  var data = jsonDecode(response.body.toString());
+
+  if (response.statusCode == 200) {
+    return data.map<Photos>((json) => Photos(
+        title: json['title'], url: json['url'], id: json['id'])).toList();
+  } else {
+    throw Exception('Failed to load photos');
+  }
+}
 class NotificationWidget extends StatelessWidget {
   final Future<List<Photos>> photosFuture;
 
@@ -11,7 +23,8 @@ class NotificationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: SingleChildScrollView(
+      child: Column(
         children: [
           Expanded(
             child: FutureBuilder(
@@ -54,6 +67,7 @@ class NotificationWidget extends StatelessWidget {
           ),
         ],
       ),
+    )
     );
   }
 }

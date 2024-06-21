@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_freemo_app/main.dart';
 import 'package:flutter_test_freemo_app/widgets/notification_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -189,7 +188,7 @@ class PaymentSection extends StatelessWidget {
               SizedBox(
                 height: 2,
               ),
-              Text('Dépôt',
+              Text('Paiement',
                 style: GoogleFonts.oswald(
                 fontSize: 20,
                 color: Colors.white,
@@ -226,7 +225,7 @@ class PaymentSection extends StatelessWidget {
               SizedBox(
                 height: 2,
               ),
-              Text('Dépôt',
+              Text('Retrait',
                 style: GoogleFonts.oswald(
                 fontSize: 20,
                 color: Colors.white,
@@ -259,7 +258,7 @@ class PaymentSection extends StatelessWidget {
               ),
                 onPressed: null,
               ),
-              Text('Dépôt',
+              Text('Tontine',
                 style: GoogleFonts.oswald(
                 fontSize: 20,
                 color: Colors.white,
